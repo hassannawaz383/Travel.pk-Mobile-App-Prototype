@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2563eb"><title>Travel.pk App</title>
+<style>
+:root{--b:#2563eb;--b2:#1d4ed8;--bg:#f4f7fc;--card:#fff;--tx:#0f1b33;--mu:#5d6b85;--bd:#dde5f3;--ok:#e8f0ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1424;--card:#151f36;--tx:#e9efff;--mu:#9aaace;--bd:#243253;--ok:#1b2a4d}}
+:root[data-theme=dark]{--bg:#0d1424;--card:#151f36;--tx:#e9efff;--mu:#9aaace;--bd:#243253;--ok:#1b2a4d}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;justify-content:center}
+#app{width:100%;max-width:430px;height:100%;display:flex;flex-direction:column}
+header{background:var(--b);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+header b{font-size:19px}header small{opacity:.85;display:block;font-size:12px}
+header button{background:rgba(255,255,255,.2);border:0;border-radius:8px;color:#fff;padding:5px 9px;margin-left:6px}
+main{flex:1;overflow-y:auto;padding:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.hero{background:linear-gradient(140deg,var(--b),var(--b2));color:#fff;border:0}
+.hero h2{margin:2px 0 6px;font-size:22px}.hero p{margin:0 0 12px;opacity:.92;font-size:14px}
+h3{margin:0 0 8px;font-size:16px}.mu{color:var(--mu);font-size:13px}
+.btn{display:block;text-align:center;background:var(--b);color:#fff;text-decoration:none;border:0;border-radius:10px;padding:11px 14px;font:inherit;font-weight:600;cursor:pointer;width:100%}
+.btn.o{background:transparent;color:var(--b);border:1px solid var(--b)}
+.row{display:flex;gap:8px}.row>*{flex:1}
+label{font-size:12px;color:var(--mu);display:block;margin:0 0 3px}
+select,input{width:100%;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;margin-bottom:10px}
+.seg{display:flex;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:3px;margin-bottom:10px}
+.seg button{flex:1;border:0;background:none;color:var(--mu);padding:7px 2px;border-radius:8px;font:inherit;font-size:13px;font-weight:600}.seg .on{background:var(--b);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:var(--ok);color:var(--b);border:0;border-radius:20px;padding:5px 11px;font:inherit;font-size:12.5px;text-decoration:none;cursor:pointer}
+.scroll{display:flex;gap:10px;overflow-x:auto;margin:0 -14px 12px;padding:0 14px}
+.dest{min-width:150px;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;text-decoration:none;color:var(--tx)}
+.dest b{display:block}.dest .em{font-size:26px}
+.list a{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--bd);color:var(--tx);text-decoration:none}.list a:last-child{border:0}
+ul{padding-left:18px;margin:6px 0}li{margin:3px 0;font-size:13.5px}
+.note{background:var(--ok);border-radius:10px;padding:9px 11px;font-size:13px;margin-bottom:10px}
+nav{display:flex;background:var(--card);border-top:1px solid var(--bd)}
+nav button{flex:1;border:0;background:none;padding:8px 0 6px;color:var(--mu);font:inherit;font-size:11px}nav .on{color:var(--b);font-weight:700}nav span{display:block;font-size:20px}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(135deg,#2563eb,#1e40af);box-shadow:0 2px 14px rgba(37,99,235,.35);position:relative;z-index:2;padding:14px 18px}
+header b{font-size:21px;font-weight:800;letter-spacing:-.4px}
+header small{letter-spacing:.6px;text-transform:uppercase;font-size:10.5px;opacity:.8}
+main{padding:16px 14px 20px;scrollbar-width:none}
+.card{border-radius:20px;border-color:transparent;box-shadow:0 6px 22px rgba(15,27,51,.07)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .card{border-color:var(--bd);box-shadow:none}}
+:root[data-theme=dark] .card{border-color:var(--bd);box-shadow:none}
+h3{font-weight:800;letter-spacing:-.2px}
+.hero{position:relative;overflow:hidden;padding:22px 18px 22px;background:radial-gradient(circle at 88% 4%,#60a5fa 0,transparent 46%),linear-gradient(145deg,#2563eb,#1e3a8a);border:0;box-shadow:0 10px 28px rgba(37,99,235,.35)}
+.hero::after{content:"✈";position:absolute;right:-4px;top:2px;font-size:96px;opacity:.13;transform:rotate(-14deg);pointer-events:none}
+.hero h2{font-size:26px;font-weight:800;letter-spacing:-.6px;line-height:1.12}
+.btn{border-radius:14px;padding:13px 14px;font-weight:700;box-shadow:0 6px 16px rgba(37,99,235,.3);transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.97)}.btn.o{box-shadow:none;border-width:1.5px}
+select,input{border-radius:12px;background:var(--bg);border-color:transparent;font-weight:500}
+select:focus,input:focus{outline:2px solid var(--b);outline-offset:1px}
+label{font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:10.5px}
+.seg{border-radius:14px;background:var(--bg);border-color:transparent}.seg button{border-radius:11px}.seg .on{box-shadow:0 3px 8px rgba(37,99,235,.35)}
+.chip{font-weight:600;padding:6px 12px}
+.scroll{scrollbar-width:none;scroll-snap-type:x mandatory}.scroll::-webkit-scrollbar{display:none}
+.dest{scroll-snap-align:start;min-width:142px;height:158px;border:0;border-radius:20px;padding:14px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--c1,#38bdf8),var(--c2,#1e3a8a));box-shadow:0 8px 20px rgba(15,27,51,.18)}
+.dest .em{position:absolute;top:10px;right:12px;font-size:38px}.dest b{font-size:17px;font-weight:800}.dest .mu{color:rgba(255,255,255,.85);font-size:12px}
+.dest:nth-child(1){--c1:#0ea5e9;--c2:#1e3a8a}.dest:nth-child(2){--c1:#64748b;--c2:#1e293b}.dest:nth-child(3){--c1:#16a34a;--c2:#14532d}
+.dest:nth-child(4){--c1:#f43f5e;--c2:#7f1d1d}.dest:nth-child(5){--c1:#f59e0b;--c2:#9a3412}.dest:nth-child(6){--c1:#8b5cf6;--c2:#312e81}
+.list a{padding:13px 2px;font-weight:500;transition:background .15s}.list a:active{background:var(--ok)}
+.note{border-radius:12px;border-left:4px solid var(--b)}
+nav{border:0;border-radius:24px 24px 0 0;box-shadow:0 -6px 24px rgba(15,27,51,.09);padding-top:4px}
+nav button{font-weight:600;transition:color .2s}nav span{width:52px;margin:0 auto 2px;border-radius:14px;padding:3px 0;transition:background .2s}nav .on span{background:var(--ok)}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+main>*{animation:up .4s cubic-bezier(.2,.8,.2,1) both}main>*:nth-child(2){animation-delay:.05s}main>*:nth-child(3){animation-delay:.1s}main>*:nth-child(4){animation-delay:.15s}main>*:nth-child(n+5){animation-delay:.2s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="app"><header><div><b>Travel.pk</b><small>Elevated Journeys</small></div><span><small style="display:inline">🇵🇰 PKR</small><button onclick="th()" aria-label="Toggle theme">◐</button></span></header>
+<main id="m"></main><nav id="n"></nav></div>
+<script>
+const S="https://travel.pk";
+const ld=(k,d)=>{try{const x=JSON.parse(localStorage.getItem(k));return x==null?d:x}catch(e){return d}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const FROM=["Karachi","Lahore","Islamabad"],TO=["Dubai","Jeddah","Medina","Doha","Abu Dhabi","Sharjah"];
+const NO=["Islamabad|Abu Dhabi","Islamabad|Sharjah"];
+const slug=s=>s.toLowerCase().replace(/ /g,"-");
+const f={from:"Lahore",to:"Dubai",trip:"rt",date:"",ret:"",pax:1};
+let tab="home",recent=ld("recent",[]),dark=matchMedia("(prefers-color-scheme: dark)").matches;
+const A=(u,t,c="btn")=>`<a class="${c}" href="${u}" target="_blank" rel="noopener">${t}</a>`;
+const today=new Date().toISOString().slice(0,10);
+const tabs=[["home","🏠","Home"],["fl","✈️","Flights"],["stay","🏨","Stay"],["umrah","🕋","Umrah"],["trips","🧳","Trips"]];
+const dests=[["🏔️","Hunza","Pakistan","pakistan/hunza"],["⛰️","Skardu","Pakistan","pakistan/skardu"],["🕌","Lahore","Pakistan","pakistan/lahore"],["🌉","Istanbul","Türkiye","turkiye/istanbul"],["🎈","Cappadocia","Türkiye","turkiye/cappadocia"],["🏙️","Dubai","UAE","uae/dubai"]];
+function form(){const opt=(a,v)=>a.map(x=>`<option${x==v?" selected":""}>${x}</option>`).join("");
+return `<div class="seg">${[["rt","Round Trip"],["ow","One Way"],["mc","Multi-City"]].map(t=>`<button class="${f.trip==t[0]?"on":""}" onclick="f.trip='${t[0]}';draw()">${t[1]}</button>`).join("")}</div>
+${f.trip=="mc"?`<div class="note">Multi-city itineraries are built on travel.pk. Tap Search to continue there.</div>`:""}
+<div class="row"><div><label>From</label><select onchange="f.from=this.value">${opt(FROM,f.from)}</select></div><div><label>To</label><select onchange="f.to=this.value">${opt(TO,f.to)}</select></div></div>
+<div class="row"><div><label>Depart</label><input type="date" min="${today}" value="${f.date}" onchange="f.date=this.value"></div>${f.trip=="rt"?`<div><label>Return</label><input type="date" min="${today}" value="${f.ret}" onchange="f.ret=this.value"></div>`:""}</div>
+<label>Travellers (adults)</label><select onchange="f.pax=+this.value">${[1,2,3,4,5,6].map(n=>`<option${n==f.pax?" selected":""}>${n}</option>`).join("")}</select>
+<button class="btn" onclick="search()">Search flights</button><div id="msg" class="mu" style="margin-top:8px"></div>`}
+function search(){const msg=document.getElementById("msg");
+ if(f.trip!="mc"){if(!f.date){msg.textContent="Enter your route and travel date to search.";return}
+  if(f.trip=="rt"&&f.ret&&f.ret<f.date){msg.textContent="Return date must be after the departure date.";return}}
+ const r={...f,at:Date.now()};recent=[r,...recent.filter(x=>!(x.from==r.from&&x.to==r.to&&x.date==r.date))].slice(0,5);sv("recent",recent);
+ const u=NO.includes(f.from+"|"+f.to)||f.trip=="mc"?S+"/air/search/":`${S}/air/flights/${slug(f.from)}-to-${slug(f.to)}/`;
+ msg.textContent="Opening live fares on travel.pk. Prices and availability are rechecked before payment.";window.open(u,"_blank")}
+function useRecent(i){const r=recent[i];Object.assign(f,r);go("fl")}
+const recentBox=()=>recent.length?`<div class="card"><h3>Recent searches</h3><div class="chips">${recent.map((r,i)=>`<button class="chip" onclick="useRecent(${i})">${r.from} → ${r.to}${r.date?" · "+r.date.slice(5):""}</button>`).join("")}</div></div>`:"";
+const routes=()=>{const o=[];FROM.forEach(a=>TO.forEach(b=>{if(!NO.includes(a+"|"+b))o.push([a,b])}));return o};
+const V={
+home:()=>`<div class="card hero"><h2>Compare flights from Pakistan, clearly.</h2><p>Search live itineraries, compare the full fare and baggage rules, then choose the journey that fits.</p><div class="chips">${["Live fare search","Fare rules shown","PKR price view","PK support team"].map(x=>`<span class="chip" style="background:rgba(255,255,255,.18);color:#fff">${x}</span>`).join("")}</div></div>
+<div class="card">${form()}</div>${recentBox()}
+<h3>Top destinations from Pakistan</h3><div class="scroll">${dests.map(d=>`<a class="dest" href="${S}/destinations/${d[3]}/" target="_blank"><span class="em">${d[0]}</span><b>${d[1]}</b><span class="mu">${d[2]}</span></a>`).join("")}</div>
+<div class="card"><h3>A more useful way to compare</h3><ul><li><b>Compare the journey</b>, not just the logo: time, connections and duration with the price.</li><li><b>Read what the fare includes:</b> baggage, change and cancellation rules before paying.</li><li><b>Clear checkout:</b> review names, itinerary and price before confirming. Bookings stay in My Trips.</li></ul></div>
+<div class="card"><h3>Airlines travellers compare</h3><div class="chips">${["PIA","Airblue","AirSial","Serene Air","Emirates","Qatar Airways","Turkish Airlines","Saudi Airlines","flydubai","Air Arabia"].map(x=>`<span class="chip">${x}</span>`).join("")}</div><p class="mu">Examples only. Your search results show current availability.</p></div>
+<div class="card"><h3>Reviews</h3><p class="mu" style="margin:0 0 8px">No booking-linked reviews are published yet. Travel.pk does not use sample or generated testimonials.</p><div class="row">${A(S+"/reviews/","Review standard","btn o")}${A("https://g.page/r/CYLbL7CYauTHEAI/review","Google review","btn o")}</div></div>`,
+fl:()=>`<div class="card">${form()}</div>${recentBox()}<div class="card list"><h3>Popular flight routes</h3>${routes().map(r=>`<a href="${S}/air/flights/${slug(r[0])}-to-${slug(r[1])}/" target="_blank"><span>${r[0]} to ${r[1]}</span><span>›</span></a>`).join("")}<a href="${S}/air/flights/" target="_blank"><b>View all popular routes</b><span>›</span></a></div>
+<div class="card"><h3>Before you pay</h3><ul><li>Check baggage, change and cancellation rules</li><li>A flexible fare can be better value than a restrictive one</li><li>Recheck price before payment</li></ul>${A(S+"/price-alerts/","Set a price alert","btn o")}</div>`,
+stay:()=>`<div class="card hero"><h2>Plan a stay</h2><p>Find places to stay and connect them to your flights.</p>${A(S+"/hotels/","Search stays","btn\" style=\"background:#fff;color:#2563eb")}</div><div class="card list"><h3>Start with a city guide</h3>${dests.map(d=>`<a href="${S}/destinations/${d[3]}/" target="_blank"><span>${d[0]} ${d[1]} <small class="mu">· ${d[2]}</small></span><span>›</span></a>`).join("")}<a href="${S}/destinations/" target="_blank"><b>All destinations</b><span>›</span></a></div><div class="card list"><h3>More planning</h3><a href="${S}/packages/" target="_blank"><span>Packages</span><span>›</span></a><a href="${S}/trip-planner/" target="_blank"><span>Trip Planner</span><span>›</span></a><a href="${S}/airport-services/" target="_blank"><span>Airport services</span><span>›</span></a><a href="${S}/transport/" target="_blank"><span>Transport planning</span><span>›</span></a></div>`,
+umrah:()=>`<div class="card hero"><h2>Pilgrimage planning</h2><p>Separate Umrah and Hajj guidance for documents, timing, stays and ground arrangements.</p>${A(S+"/umrah/","Open Umrah guide","btn\" style=\"background:#fff;color:#2563eb")}</div><div class="card list"><h3>Flights to Jeddah &amp; Medina</h3>${FROM.flatMap(a=>["Jeddah","Medina"].map(b=>`<a href="${S}/air/flights/${slug(a)}-to-${slug(b)}/" target="_blank"><span>${a} to ${b}</span><span>›</span></a>`)).join("")}</div><div class="note">Visa and entry rules change. Always confirm passport validity, visa and health requirements with the official authority, embassy and airline.</div>${A(S+"/blog/","Visa guidance & travel articles","btn o")}`,
+trips:()=>`<div class="card"><h3>My Trips</h3><p class="mu" style="margin:0 0 8px">Completed bookings remain available in My Trips after you sign in.</p>${A(S+"/login?redirect=/dashboard/user","Sign in to view trips")}</div>
+<div class="card list"><h3>Tools &amp; rewards</h3><a href="${S}/price-alerts/" target="_blank"><span>🔔 Price alerts</span><span>›</span></a><a href="${S}/loyalty/" target="_blank"><span>🎁 Loyalty program</span><span>›</span></a><a href="${S}/trip-planner/" target="_blank"><span>🧭 Trip Planner</span><span>›</span></a><a href="${S}/corporate/" target="_blank"><span>💼 Corporate travel</span><span>›</span></a><a href="${S}/status/" target="_blank"><span>🟢 Service status</span><span>›</span></a></div>
+<div class="card"><h3>Stuck on a booking?</h3><p class="mu" style="margin:0 0 8px">Urdu and English support from our Lahore team. Mon–Fri, 10 AM–7 PM PKT.</p><div class="row">${A("tel:+924235692952","📞 Call")}${A("https://wa.me/924235692952","💬 WhatsApp","btn o")}</div><br>${A("mailto:info@travel.pk","✉️ info@travel.pk","btn o")}</div>
+<div class="card list"><h3>Help &amp; policies</h3><a href="${S}/help/" target="_blank"><span>Help Center</span><span>›</span></a><a href="${S}/refund-policy/" target="_blank"><span>Refund policy</span><span>›</span></a><a href="${S}/trust/" target="_blank"><span>Trust Centre</span><span>›</span></a><a href="${S}/terms-of-service/" target="_blank"><span>Terms of service</span><span>›</span></a></div><p class="mu">Travel.pk · 231-B Main Boulevard, Phase 8 DHA, Lahore · Operated by TechAbout Private Limited</p>`};
+function go(t){tab=t;draw()}
+function th(){dark=!dark;document.documentElement.dataset.theme=dark?"dark":"light"}
+function draw(){const m=document.getElementById("m");m.innerHTML=V[tab]();
+ document.getElementById("n").innerHTML=tabs.map(t=>`<button class="${t[0]==tab?"on":""}" onclick="go('${t[0]}')"><span>${t[1]}</span>${t[2]}</button>`).join("")}
+draw();
+</script></body></html>
